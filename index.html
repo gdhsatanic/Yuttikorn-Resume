@@ -93,26 +93,33 @@
     .profile-group {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
     }
 
+    /* PHOTO CONTAINER DESIGN */
     .avatar-wrapper {
       position: relative;
-      width: 90px;
-      height: 90px;
+      width: 105px;
+      height: 125px;
       border-radius: var(--radius-md);
       background: linear-gradient(135deg, #1E293B, #0F172A);
       border: 2px solid var(--accent-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .avatar-wrapper i {
-      color: var(--accent-blue);
-      width: 44px;
-      height: 44px;
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .avatar-wrapper:hover .avatar-img {
+      transform: scale(1.05);
     }
 
     .name-title h1 {
@@ -123,11 +130,12 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     .badge-verified {
       font-size: 0.75rem;
-      padding: 3px 10px;
+      padding: 4px 10px;
       background: rgba(16, 185, 129, 0.15);
       border: 1px solid var(--accent-emerald);
       color: var(--accent-emerald);
@@ -149,7 +157,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .chip {
@@ -299,7 +307,7 @@
       gap: 10px;
     }
 
-    /* INTERACTIVE CASE STUDY CARDS */
+    /* CASE STUDY CARDS */
     .case-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid var(--border-subtle);
@@ -344,7 +352,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* BEFORE / AFTER COMPARISON WIDGET */
+    /* BEFORE / AFTER COMPARISON */
     .compare-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -402,7 +410,7 @@
       color: #FFFFFF;
     }
 
-    /* SKILLS & ARCHITECTURE BADGES */
+    /* BADGES & CREDENTIALS */
     .skill-group {
       margin-bottom: 20px;
     }
@@ -452,7 +460,6 @@
       font-weight: 600;
     }
 
-    /* CERTIFICATION CARDS */
     .cert-item {
       display: flex;
       align-items: center;
@@ -492,11 +499,15 @@
         color: #000000 !important;
         box-shadow: none !important;
       }
-      .btn-action, .contact-chips, .avatar-wrapper svg {
+      .btn-action, .contact-chips {
         display: none !important;
       }
       .name-title h1, .kpi-number, .company-tag {
         color: #0F172A !important;
+      }
+      .avatar-wrapper {
+        border-color: #94A3B8 !important;
+        box-shadow: none !important;
       }
     }
   </style>
@@ -505,13 +516,16 @@
 
 <div class="container">
 
-  <!-- HEADER -->
+  <!-- HEADER WITH PHOTO -->
   <header class="header-card">
     <div class="header-content">
       <div class="profile-group">
+        
+        <!-- รูปภาพส่วนตัวของคุณ (หากไฟล์ชื่อ profile.jpg อยู่ข้างๆ จะแสดงทันที) -->
         <div class="avatar-wrapper">
-          <i data-lucide="cpu"></i>
+          <img src="profile.jpg" alt="Yuttikorn Wuttiprapagit" class="avatar-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=250';">
         </div>
+
         <div class="name-title">
           <h1>
             Yuttikorn Wuttiprapagit
@@ -615,7 +629,6 @@
           <p style="font-size:0.88rem; color:var(--text-muted); margin-top:4px;">
             Managed daily operations for <b>400+ personnel</b> (meeting strict SQDCM metrics) and achieved a 4% overall productivity surge.
           </p>
-          <!-- Before/After Component -->
           <div class="compare-container">
             <div class="compare-box">
               <div class="compare-title before"><i data-lucide="alert-triangle" style="width:14px;"></i> Challenge / Before</div>
@@ -653,7 +666,6 @@
             </div>
             <span class="timeline-date">2008 – 2012</span>
           </div>
-          <!-- Before/After Component -->
           <div class="compare-container">
             <div class="compare-box">
               <div class="compare-title before"><i data-lucide="clock" style="width:14px;"></i> Bottleneck (Standard Tooling)</div>
